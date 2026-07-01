@@ -30,7 +30,7 @@ function AddProduct() {
   }
 
   return (
-    <Container className="mt-5" style={{ maxWidth: "600px" }}>
+    <Container className="mt-5 mb-5" style={{ maxWidth: "600px" }}>
       <h2 className="mb-4">Add New Product</h2>
       {success && <Alert variant="success">Product added successfully!</Alert>}
       {error && <Alert variant="danger">{error}</Alert>}
@@ -76,16 +76,37 @@ function AddProduct() {
             required
           />
         </Form.Group>
-        <Button variant="success" type="submit">
-          Add Product
-        </Button>
-        <Button
-          variant="secondary"
-          className="ms-2"
-          onClick={() => navigate("/products")}
-        >
-          Cancel
-        </Button>
+        <div className="d-flex gap-2 mt-3">
+          <Button
+            type="submit"
+            style={{
+              background: "#1a1a1a",
+              border: "none",
+              borderRadius: "0",
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              fontSize: "0.85rem",
+              padding: "12px 24px",
+            }}
+          >
+            Add Product
+          </Button>
+          <Button
+            onClick={() => navigate("/products")}
+            style={{
+              background: "transparent",
+              border: "2px solid #999",
+              color: "#999",
+              borderRadius: "0",
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              fontSize: "0.85rem",
+              padding: "12px 24px",
+            }}
+          >
+            Cancel
+          </Button>
+        </div>
       </Form>
     </Container>
   );

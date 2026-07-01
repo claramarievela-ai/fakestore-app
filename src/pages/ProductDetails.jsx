@@ -18,6 +18,7 @@ function ProductDetails() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   useEffect(() => {
     axios
@@ -72,23 +73,67 @@ function ProductDetails() {
           <p className="text-muted">{product.category}</p>
           <h4 className="text-success">${product.price}</h4>
           <p>{product.description}</p>
-          <Button
-            variant="warning"
-            className="me-2"
-            onClick={() => navigate(`/edit-product/${id}`)}
-          >
-            Edit Product
-          </Button>
-          <Button
-            variant="danger"
-            className="me-2"
-            onClick={() => setShowModal(true)}
-          >
-            Delete Product
-          </Button>
-          <Button variant="secondary" onClick={() => navigate("/products")}>
-            Back to Products
-          </Button>
+          <div className="d-flex gap-2 flex-wrap mt-3">
+            <Button
+              onClick={() => setAddedToCart(true)}
+              style={{
+                background: addedToCart ? "#333" : "#1a1a1a",
+                border: "none",
+                borderRadius: "0",
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+                fontSize: "0.85rem",
+                padding: "12px 24px",
+              }}
+            >
+              {addedToCart ? "✓ Added to Cart" : "Add to Cart"}
+            </Button>
+            <Button
+              onClick={() => navigate(`/edit-product/${id}`)}
+              style={{
+                background: "transparent",
+                border: "2px solid #1a1a1a",
+                color: "#1a1a1a",
+                borderRadius: "0",
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+                fontSize: "0.85rem",
+                padding: "12px 24px",
+              }}
+            >
+              Edit
+            </Button>
+            <Button
+              onClick={() => setShowModal(true)}
+              style={{
+                background: "transparent",
+                border: "2px solid #dc3545",
+                color: "#dc3545",
+                borderRadius: "0",
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+                fontSize: "0.85rem",
+                padding: "12px 24px",
+              }}
+            >
+              Delete
+            </Button>
+            <Button
+              onClick={() => navigate("/products")}
+              style={{
+                background: "transparent",
+                border: "2px solid #999",
+                color: "#999",
+                borderRadius: "0",
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+                fontSize: "0.85rem",
+                padding: "12px 24px",
+              }}
+            >
+              Back
+            </Button>
+          </div>
         </Col>
       </Row>
 
